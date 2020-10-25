@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded',function(){
 	} else {
 		addNewClass(document.querySelector('.navbar__menu'),'navbar__menu--noMob');
 		addNewClass(document.querySelector('.navbar__menu-mob'), 'navbar__menu-mob--noMob');
-	};
+	}
 
 	var navbarMenuLinks = document.querySelectorAll('.navbar__menu li a');
 	[].forEach.call(navbarMenuLinks, function (navbarMenuLink) {
@@ -116,6 +116,18 @@ document.addEventListener('DOMContentLoaded',function(){
 			var dataTarget = document.querySelector('.' + scrollToClass);
 			if (dataTarget) {
 				dataTarget.scrollIntoView({ behavior: 'smooth', block: 'center'});
+			}
+		}, false);
+	});
+
+	var MobileNavbarMenuLinks = document.querySelectorAll('.nav__mobile li a');
+	[].forEach.call(MobileNavbarMenuLinks, function (mobileNavbarMenuLink) {
+		mobileNavbarMenuLink.addEventListener('click', function(e) {
+			e.preventDefault();
+			var scrollToClass = mobileNavbarMenuLink.getAttribute('data-scroll-to');
+			var dataTarget = document.querySelector('.' + scrollToClass);
+			if (dataTarget) {
+				dataTarget.scrollIntoView({ behavior: 'smooth', block: 'start'});
 			}
 		}, false);
 	});
@@ -889,7 +901,7 @@ document.addEventListener('DOMContentLoaded',function(){
 				label: "Menu",
 				insert: "before",
 				customToggle: "",
-				closeOnNavClick: false,
+				closeOnNavClick: true,
 				openPos: "relative",
 				navClass: "nav-collapse",
 				navActiveClass: "js-nav-active",
